@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Country Flags</string>
+
+    <string name="country_flag_description">%1$s Flag</string>
+    <string name="country_capital_label">Capital: %1$s</string>
+    <string name="country_population_label">Population: %1$s</string>
+    <string name="unknown">Unknown</string>
+</resources>
