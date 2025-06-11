@@ -20,7 +20,7 @@ fun MainScreen(
         when (route) {
             is CountryList -> NavEntry(route) {
                 //backStack.add(CountryList)
-                CountryScreen(
+                CountryListScreen(
                     onShowDetailsClick = { country ->
                         backStack.add(
                             CountryDetails(

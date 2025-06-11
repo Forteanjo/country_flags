@@ -21,7 +21,7 @@ data class Country(
     val languages: List<Language>,
     val latlng: List<Double>? = null,
     val name: String,
-    val nativeName: String,
+    val nativeName: String? = null,
     val numericCode: String,
     val population: Int,
     val region: String,

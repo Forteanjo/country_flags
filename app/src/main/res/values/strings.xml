@@ -1,8 +1,16 @@
 <resources>
     <string name="app_name">Country Flags</string>
 
-    <string name="country_flag_description">%1$s Flag</string>
+    <string name="country_acronym_label">Acronym: %1$s</string>">
+    <string name="country_area_label">Area: %1$skm²</string>"
     <string name="country_capital_label">Capital: %1$s</string>
+    <string name="country_flag_description">%1$s Flag</string>
+    <string name="country_native_name_label">Native name: %1$s</string>
+    <string name="country_other_acronyms_label">Other Acronyms: %1$s</string>
+    <string name="country_other_names_label">Other Names: %1$s</string>
     <string name="country_population_label">Population: %1$s</string>
+    <string name="country_region_label">Region: %1$s</string>
+    <string name="country_subregion_label">Subregion: %1$s</string>
+    <string name="not_applicable">n/a</string>
     <string name="unknown">Unknown</string>
 </resources>

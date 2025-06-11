@@ -1,41 +1,51 @@
 package sco.carlukesoftware.countryflags.ui.screens
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import org.koin.compose.koinInject
 import sco.carlukesoftware.countryflags.R
 import sco.carlukesoftware.countryflags.models.Country
+import sco.carlukesoftware.countryflags.utils.CARD_ELEVATION
+import sco.carlukesoftware.countryflags.utils.CARD_PADDING
+import sco.carlukesoftware.countryflags.utils.COLUMN_HORIZONTAL_PADDING
 import sco.carlukesoftware.countryflags.viewmodel.CountryViewModel
 import java.text.DecimalFormat
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CountryScreen(
+fun CountryListScreen(
     modifier: Modifier = Modifier,
     countryViewModel: CountryViewModel = koinInject(),
     onShowDetailsClick: (Country) -> Unit
 ) {
-    val countries by countryViewModel.countryList.collectAsState()
+    val countries by countryViewModel.countryList.collectAsStateWithLifecycle(emptyList())
 
     // Simple decimal formatting
     val decimalFormatter = remember {
@@ -47,32 +57,28 @@ fun CountryScreen(
         modifier = modifier
             .fillMaxSize()
             .padding(
-                horizontal = 16.dp,
+                horizontal = COLUMN_HORIZONTAL_PADDING.dp,
             )
     ) {
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp)
-                .height(74.dp),
-            elevation = CardDefaults
-                .cardElevation(8.dp)
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxSize(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = stringResource(R.string.app_name),
-                    fontWeight = FontWeight.Bold
-                )
-            }
-
-        }
+        TopAppBar(
+            title = {
+                Text("Countries")
+            },
+            actions = {
+                IconButton(onClick = {  }) {
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = "Search"
+                    )
+                }
+            },
+            windowInsets = WindowInsets(0),
+        )
 
         LazyColumn(
-            modifier = Modifier
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            contentPadding = PaddingValues(16.dp),
+            modifier = Modifier.fillMaxSize()
         ) {
             items(countries) {country ->
                 CountryItem(
@@ -87,8 +93,6 @@ fun CountryScreen(
     }
 }
 
-const val CARD_PADDING = 8
-const val CARD_ELEVATION = 4
 
 @Composable
 fun CountryItem(
@@ -102,7 +106,9 @@ fun CountryItem(
             onDetailsClick(country)
         },
         modifier = modifier
-            .padding(CARD_PADDING.dp),
+            .padding(
+                vertical = CARD_PADDING.dp
+            ),
         elevation = CardDefaults
             .cardElevation(CARD_ELEVATION.dp)
     ) {
@@ -120,10 +126,11 @@ fun CountryItem(
                 modifier = Modifier
                     .size(80.dp)
             )
+
             Column(
                 modifier = Modifier
                     .padding(
-                        start = 20.dp,
+                        start = 20.dp
                     )
             ) {
                 Text(
@@ -134,7 +141,7 @@ fun CountryItem(
                 Text(
                     text = stringResource(
                         R.string.country_capital_label,
-                        country.capital?: stringResource(R.string.unknown) // Use stringResource
+                        country.capital?: stringResource(R.string.not_applicable) // Use stringResource
                     ), // Use stringResource
                     style = MaterialTheme.typography.bodyLarge
                 )
