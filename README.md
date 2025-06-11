@@ -40,7 +40,7 @@ The Country Flags app is an Android application built using modern Android devel
 Example:
 | Main List Screen | Detail Screen (if any) |
 |---|---|
-| *(screenshots/screenshot1.png)* | *(insert_screenshot_detail.png)* |
+| ![Screenshot 1](screenshots/screenshot1.png) | *(insert_screenshot_detail.png)* |
 
 To add images:
 1. Create an `assets` or `docs/images` folder in your project's root (or wherever you prefer).
