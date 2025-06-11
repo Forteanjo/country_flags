@@ -1,13 +1,13 @@
 # Country Flags Android App
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Kotlin](https://img.shields.io/badge/Kotlin-2.0.0-blue.svg)](https://kotlinlang.org/)
-[![Compose](https://img.shields.io/badge/Compose-1.5.4-blue.svg)](https://developer.android.com/jetpack/compose)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.1.21-blue.svg)](https://kotlinlang.org/)
+[![Compose](https://img.shields.io/badge/Compose-1.8.2-blue.svg)](https://developer.android.com/jetpack/compose)
 
 ## Table of Contents
 1. [Overview](#overview)
 2. [Features](#features)
-3. [Screenshots](#screenshots) (Optional)
+3. [Screenshots](#screenshots) 
 4. [Tech Stack & Libraries](#tech-stack--libraries)
 5. [Setup & Installation](#setup--installation)
 6. [API](#api)
@@ -40,7 +40,7 @@ The Country Flags app is an Android application built using modern Android devel
 Example:
 | Main List Screen | Detail Screen (if any) |
 |---|---|
-| *(insert_screenshot_list.png)* | *(insert_screenshot_detail.png)* |
+| *(screenshots/screenshot1.png)* | *(insert_screenshot_detail.png)* |
 
 To add images:
 1. Create an `assets` or `docs/images` folder in your project's root (or wherever you prefer).
@@ -50,7 +50,7 @@ To add images:
 ## Tech Stack & Libraries
 * **UI:**
     * [Jetpack Compose](https://developer.android.com/jetpack/compose): Modern toolkit for building native Android UI.
-    * [Material 3 (or Material 2)](https://m3.material.io/): Design system.
+    * [Material 3](https://m3.material.io/): Design system.
     * [Coil](https://coil-kt.github.io/coil/): Image loading library for Compose.
 * **Architecture:**
     * MVVM (Model-View-ViewModel): Separation of concerns.
