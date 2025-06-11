@@ -1,8 +1,10 @@
 package sco.carlukesoftware.countryflags.models
 
 import kotlinx.serialization.EncodeDefault
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 
+@OptIn(ExperimentalSerializationApi::class)
 @Serializable
 data class RegionalBloc(
     val acronym: String,

@@ -32,7 +32,8 @@ import java.text.DecimalFormat
 @Composable
 fun CountryScreen(
     modifier: Modifier = Modifier,
-    countryViewModel: CountryViewModel = koinInject()
+    countryViewModel: CountryViewModel = koinInject(),
+    onShowDetailsClick: (Country) -> Unit
 ) {
     val countries by countryViewModel.countryList.collectAsState()
 
@@ -76,29 +77,34 @@ fun CountryScreen(
             items(countries) {country ->
                 CountryItem(
                     country = country,
-                    decimalFormatter = decimalFormatter
+                    decimalFormatter = decimalFormatter,
+                    onDetailsClick =  {
+                        onShowDetailsClick(country)
+                    }
                 )
             }
         }
     }
 }
 
+const val CARD_PADDING = 8
+const val CARD_ELEVATION = 4
 
 @Composable
 fun CountryItem(
     country: Country,
     decimalFormatter: DecimalFormat, // Pass it in
     modifier: Modifier = Modifier,
-    onClick: (country: Country) -> Unit = {}
+    onDetailsClick: (Country) -> Unit = {}
 ) {
     Card(
         onClick = {
-            onClick(country)
+            onDetailsClick(country)
         },
         modifier = modifier
-            .padding(8.dp),
+            .padding(CARD_PADDING.dp),
         elevation = CardDefaults
-            .cardElevation(4.dp)
+            .cardElevation(CARD_ELEVATION.dp)
     ) {
         Row(
             modifier = Modifier
@@ -141,5 +147,20 @@ fun CountryItem(
                 )
             }
         }
+    }
+}
+
+@Composable
+fun CountryItemShimmer(
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(CARD_PADDING.dp),
+        elevation = CardDefaults
+            .cardElevation(CARD_ELEVATION.dp)
+    ) {
+
     }
 }

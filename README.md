@@ -1,5 +1,9 @@
 # Country Flags Android App
 
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.0.0-blue.svg)](https://kotlinlang.org/)
+[![Compose](https://img.shields.io/badge/Compose-1.5.4-blue.svg)](https://developer.android.com/jetpack/compose)
+
 ## Table of Contents
 1. [Overview](#overview)
 2. [Features](#features)
@@ -15,8 +19,7 @@
 
 ## Overview
 The Country Flags app is an Android application built using modern Android development practices. It displays a list of countries along with their flags, capitals, and populations. Users can view details for each country. The app demonstrates the use of Jetpack Compose for the UI, Koin for dependency injection, Ktor for networking, and Room for local data persistence.
-
-*(Add a sentence or two more about the specific purpose or unique aspect of your project if any)*
+* 
 
 ## Features
 * Displays a list of countries with their flags.
@@ -32,7 +35,7 @@ The Country Flags app is an Android application built using modern Android devel
 * *(Add any other specific features your app has, e.g., search functionality, sorting, dark mode, etc.)*
 
 ## Screenshots
-*(This section is optional but highly recommended for UI-focused projects. Add screenshots of your app's main screens here.)*
+*
 
 Example:
 | Main List Screen | Detail Screen (if any) |
@@ -50,7 +53,7 @@ To add images:
     * [Material 3 (or Material 2)](https://m3.material.io/): Design system.
     * [Coil](https://coil-kt.github.io/coil/): Image loading library for Compose.
 * **Architecture:**
-    * MVVM (Model-View-ViewModel) - *(Assuming this is the pattern you're following)*
+    * MVVM (Model-View-ViewModel): Separation of concerns.
 * **Dependency Injection:**
     * [Koin](https://insert-koin.io/): Pragmatic lightweight dependency injection framework.
 * **Networking:**

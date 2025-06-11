@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import sco.carlukesoftware.countryflags.ui.screens.CountryScreen
+import sco.carlukesoftware.countryflags.ui.screens.MainScreen
 import sco.carlukesoftware.countryflags.ui.theme.CountryFlagsTheme
 
 class MainActivity : ComponentActivity() {
@@ -24,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier
                         .fillMaxSize()
                 ) { innerPadding ->
-                    CountryScreen(
+                    MainScreen(
                         modifier = Modifier
                             .padding(innerPadding)
                     )
