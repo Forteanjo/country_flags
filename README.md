@@ -37,15 +37,9 @@ The Country Flags app is an Android application built using modern Android devel
 ## Screenshots
 *
 
-Example:
 | Main List Screen | Detail Screen (if any) |
 |---|---|
 | ![Screenshot 1](screenshots/screenshot1.png) | *(insert_screenshot_detail.png)* |
-
-To add images:
-1. Create an `assets` or `docs/images` folder in your project's root (or wherever you prefer).
-2. Add your screenshots there.
-3. Use markdown image syntax: `![Alt text for screen reader](path/to/your/image.png)`
 
 ## Tech Stack & Libraries
 * **UI:**
@@ -87,14 +81,11 @@ To add images:
 
 ## API
 This project fetches country data from the following API:
-* **API Name:** (e.g., Countries API, RestCountries, etc. - Be specific if you know the name)
+* **API Name:** ApiCountries - The Free RESTful Countries Data API
 * **Base URL:** `https://www.apicountries.com/` (or the specific base URL Ktor is configured with)
 * **Endpoint Used:** `/countries`
-* **Authentication:** (Specify if any API key or authentication is needed. If so, explain how to configure it, perhaps via a `local.properties` file that's gitignored.)
+* **Authentication:** n/a
 
-Example for API Key (if needed):
-If an API key is required, create a `local.properties` file in the root of your project (this file should be in your `.gitignore`) and add the following line:
-*(You would then need to read this in your app's build.gradle and pass it as a build config field or directly.)*
 
 ## Project Structure
 
