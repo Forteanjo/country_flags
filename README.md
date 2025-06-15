@@ -37,9 +37,9 @@ The Country Flags app is an Android application built using modern Android devel
 ## Screenshots
 *
 
-| Main List Screen | Detail Screen (if any) |
-|---|---|
-| ![Screenshot 1](screenshots/screenshot1.png) | *(insert_screenshot_detail.png)* |
+| Main List Screen | Detail Screen (if any)                       |
+|---|----------------------------------------------|
+| ![Screenshot 1](screenshots/screenshot1.png) | ![Screenshot 2](screenshots/screenshot2.png) |
 
 ## Tech Stack & Libraries
 * **UI:**
