@@ -91,6 +91,8 @@ dependencies {
     implementation(libs.bundles.kotlinx.serialization)
     implementation(libs.bundles.androidx.navigation3)
 
+    implementation(libs.kotlinx.datetime)
+
     // Koin
     implementation(libs.bundles.koin)
 

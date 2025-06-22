@@ -9,12 +9,12 @@ espressoCore = "3.6.1"
 
 lifecycleRuntimeKtx = "2.9.1"
 activityCompose = "1.10.1"
-composeBom = "2025.06.00"
+composeBom = "2025.06.01"
 
 # Navigation
 navigation-compose = "2.9.0"
-navigation3-runtime = "1.0.0-alpha03"
-navigation3-viewmodel = "1.0.0-alpha01"
+navigation3-runtime = "1.0.0-alpha04"
+navigation3-viewmodel = "1.0.0-alpha02"
 
 # Koin for dependency injection
 koin = "4.0.4"
@@ -28,7 +28,7 @@ appcompat = "1.7.1"
 material = "1.12.0"
 
 #kotlinx-datetime
-kotlinx-datetime = "0.6.1"
+kotlinx-datetime = "0.6.2"
 
 kotlinxSerializationCore = "1.8.1"
 kotlinxSerializationJson = "1.8.1"
@@ -86,9 +86,8 @@ androidx-navigation3-viewmodel = { group = "androidx.lifecycle", name = "lifecyc
 
 #kotlinx-datetime
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
-
-kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerializationCore" }
-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+kotlinx-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinxSerializationCore" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name ="kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 
 # Koin for dependency injection
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
@@ -97,7 +96,6 @@ koin-androidx-navigation = { group = "io.insert-koin", name = "koin-androidx-nav
 
 # Coil
 io-coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil-compose" }
-
 
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
