@@ -3,14 +3,22 @@ package sco.carlukesoftware.countryflags.ui.screens
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.DisplayMode
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.SelectableDates
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,6 +36,11 @@ import kotlinx.datetime.toLocalDateTime
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomDatePicker(modifier: Modifier = Modifier) {
+
+    var isDatePickerOpen by rememberSaveable {
+        mutableStateOf(false)
+    }
+
     val initialDateMillis = LocalDate(2024,10,6)
         .atStartOfDayIn(TimeZone.UTC)
         .toEpochMilliseconds()
@@ -38,21 +51,63 @@ fun CustomDatePicker(modifier: Modifier = Modifier) {
         selectableDates = HistoricalSelectableDates,
     )
 
+    if (isDatePickerOpen) {
+        DatePickerDialog(
+            modifier = Modifier
+                .verticalScroll(rememberScrollState()),
+            onDismissRequest = {
+                // Dismiss the dialog when the user clicks outside the dialog or on the back
+                // button. If you want to disable that functionality, simply use an empty
+                // onDismissRequest.
+                isDatePickerOpen = false
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        // Do something with the date chosen by the user
+                        isDatePickerOpen = false
+                    }
+                ) {
+                    Text("Select")
+                }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = {
+                        // Dismiss the dialog when the user clicks the dismiss button
+                        isDatePickerOpen = false
+                    }
+                ) {
+                    Text("Cancel")
+                }
+            },
+        ) {
+            DatePicker(
+                state = datePickerState,
+                modifier = modifier,
+                showModeToggle = true,
+                title = {
+                    Text(text = "When was your last birthday?")
+                }
+            )
+        }
+    }
+
     Column(
         modifier = modifier
             .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        horizontalAlignment = Alignment
+            .CenterHorizontally,
+        verticalArrangement = Arrangement
+            .Center
     ) {
-
-        DatePicker(
-            state = datePickerState,
-            modifier = modifier,
-            showModeToggle = true,
-            title = {
-                Text(text = "When was your last birthday?")
+        Button(
+            onClick = {
+                isDatePickerOpen = true
             }
-        )
+        ) {
+            Text(text = "Open date picker")
+        }
 
         Text(
             text = "Selected date: ${datePickerState.selectedDateMillis.toFormattedDateString()}"
