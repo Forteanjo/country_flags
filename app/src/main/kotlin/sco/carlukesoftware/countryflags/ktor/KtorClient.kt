@@ -21,6 +21,7 @@ open class KtorClient(private val baseUrl: String) {
         install(ContentNegotiation) {
             json(Json {
                 ignoreUnknownKeys = true
+                prettyPrint = true
                 isLenient = true
                 coerceInputValues = true
                 encodeDefaults = true // This makes @EncodeDefault behavior the default

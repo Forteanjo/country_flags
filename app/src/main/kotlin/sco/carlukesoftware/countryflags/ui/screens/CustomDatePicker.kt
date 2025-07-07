@@ -22,8 +22,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atStartOfDayIn
@@ -32,8 +30,11 @@ import kotlinx.datetime.format.MonthNames
 import kotlinx.datetime.format.Padding
 import kotlinx.datetime.format.char
 import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalTime::class)
 @Composable
 fun CustomDatePicker(modifier: Modifier = Modifier) {
 
@@ -115,6 +116,7 @@ fun CustomDatePicker(modifier: Modifier = Modifier) {
     }
 }
 
+@OptIn(ExperimentalTime::class)
 fun Long?.toFormattedDateString(): String {
     val instant = Instant.fromEpochMilliseconds(this ?: System.currentTimeMillis())
     val date = instant.toLocalDateTime(TimeZone.currentSystemDefault()).date
@@ -131,7 +133,7 @@ fun Long?.toFormattedDateString(): String {
 //        year()
 
         dayOfWeek(names = DayOfWeekNames.ENGLISH_FULL); char(' ')
-        dayOfMonth(padding = Padding.NONE); char(' ')
+        day(padding = Padding.NONE); char(' ')
         monthName(MonthNames.ENGLISH_FULL); char(' ')
         year()
     }
@@ -142,8 +144,10 @@ fun Long?.toFormattedDateString(): String {
 object HistoricalSelectableDates : SelectableDates {
 
     private val timeZone = TimeZone.currentSystemDefault()
+    @OptIn(ExperimentalTime::class)
     private val today = Clock.System.now().toLocalDateTime(timeZone).date
 
+    @OptIn(ExperimentalTime::class)
     override fun isSelectableDate(utcTimeMillis: Long): Boolean {
         val date = Instant.fromEpochMilliseconds(utcTimeMillis)
             .toLocalDateTime(timeZone).date
