@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -14,6 +16,7 @@ android {
     defaultConfig {
         applicationId = "sco.carlukesoftware.countryflags"
         minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
         //noinspection EditedTargetSdkVersion
         versionCode = libs.versions.app.versionCode.get().toInt()
         versionName = libs.versions.app.versionName.get()
@@ -32,12 +35,15 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.jvmTarget.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.jvmTarget.get())
     }
 
-    kotlinOptions {
-        jvmTarget = libs.versions.jvmTarget.get()
+    kotlin {
+        compilerOptions {
+            freeCompilerArgs.addAll("-Xcontext-sensitive-resolution")
+            jvmTarget = JvmTarget.fromTarget(libs.versions.jvmTarget.get())
+        }
     }
 
     buildFeatures {
@@ -101,6 +107,10 @@ dependencies {
 
     // Coil
     implementation(libs.io.coil.compose)
+
+    // Local libraries
+    implementation(libs.kotlin.extensions.library)
+    implementation(libs.compose.extensions.library)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

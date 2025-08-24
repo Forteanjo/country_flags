@@ -29,7 +29,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
-import org.koin.compose.koinInject
+import org.koin.compose.viewmodel.koinViewModel
 import sco.carlukesoftware.countryflags.R
 import sco.carlukesoftware.countryflags.models.Country
 import sco.carlukesoftware.countryflags.utils.CARD_ELEVATION
@@ -42,7 +42,7 @@ import java.text.DecimalFormat
 @Composable
 fun CountryListScreen(
     modifier: Modifier = Modifier,
-    countryViewModel: CountryViewModel = koinInject(),
+    countryViewModel: CountryViewModel = koinViewModel(),
     onShowDetailsClick: (Country) -> Unit
 ) {
     val countries by countryViewModel.countryList.collectAsStateWithLifecycle(emptyList())
